@@ -47,7 +47,7 @@ nav {
 }
 
 .sidebar {
-    width: 230px;
+    width: 260px;
     height: 100vh;
     position: sticky;
     top: 0;
@@ -78,6 +78,12 @@ box-sizing: border-box;
 
 .sidebar a:hover {
     color: #0d4ea6;
+}
+             .sidebar a.active {
+    color: #0d4ea6;
+    font-weight: bold;
+    border-left: 3px solid #0d4ea6;
+    padding-left: 8px;
 }
 
 .content {
@@ -530,5 +536,38 @@ distance indicators. Our preprint paper is available on <a href="https://zenodo.
     <p>— Carl Sagan</p>
 <p>Contact me at <a href="mailto:tsiyonhone@gmail.com"><i class="fas fa-envelope"></i></a></p>
 </footer>
+             <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const links = document.querySelectorAll(".sidebar a");
+        const headings = document.querySelectorAll(".category-title");
+
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px 0px -60% 0px", // Triggers when the heading is near the top half of the screen
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute("id");
+                    
+                    // Remove active class from all links
+                    links.forEach((link) => link.classList.remove("active"));
+                    
+                    // Add active class to the matching sidebar link
+                    const activeLink = document.querySelector(`.sidebar a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add("active");
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Watch all category headings
+        headings.forEach((heading) => observer.observe(heading));
+    });
+</script>
+
         </body>
         </html>
