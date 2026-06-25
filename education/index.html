@@ -89,6 +89,67 @@ box-sizing: border-box;
 .content {
     flex: 1;
 }
+             /* Styling for the interactive dropdown panel */
+.courses-toggle {
+    background: #ffffff;
+    border: 2px solid #0d4ea6;
+    border-radius: 4px;
+    margin-top: 20px;
+    padding: 15px;
+}
+
+/* Styling for the trigger element text box */
+.courses-toggle summary {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0d4ea6;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    font-family: Georgia, serif;
+}
+
+/* Hover dynamic feedback */
+.courses-toggle summary:hover {
+    text-decoration: underline;
+}
+
+/* Two-column layout container inside the active panel */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 15px;
+}
+
+/* Individual list item content positioning blocks */
+.course-item {
+    background: #f8f8f8;
+    padding: 12px 15px;
+    border-left: 3px solid #0d4ea6;
+}
+
+.course-item strong {
+    display: block;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.course-item span {
+    font-size: 15px;
+    color: #666;
+}
+
+/* Responsive adjustment for small viewport breakpoints */
+@media (max-width: 768px) {
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 .category-title {
     color: #0d4ea6;
@@ -210,19 +271,45 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
    <main class="content">
     <!-- Section 1: Degrees -->
     <h1 class="category-title" id="degrees">
-        Degrees & Formal Education
+        Degree
     </h1>
     <section class="experience-card">
         <div class="experience-header">
             <div>
-                <h1>Bachelor of Science in Physics (or Astronomy)</h1>
+                <h1>Bachelor of Science in Physics</h1>
                 <h2>Addis Ababa University | Department of Physics</h2>
             </div>
             <div class="duration">
-                Oct 2022 – Present
+                Sep 2025 – Present
             </div>
         </div>
         <p>- Relevant Coursework: Astrophysics, Quantum Mechanics, Classical Mechanics, Calculus, Computer Science Fundamentals.</p>
+         <details class="courses-toggle">
+    <summary>Freshman Courses</summary>
+    <div class="courses-grid">
+        <div class="course-item">
+            <strong>General Physics I & II</strong>
+            <span>Mechanics, Electromagnetism, Wave Mechanics</span>
+        </div>
+        <div class="course-item">
+            <strong>Calculus I & II</strong>
+            <span>Limits, Derivatives, Integration, Multi-variable Functions</span>
+        </div>
+        <div class="course-item">
+            <strong>Introduction to Computer Science</strong>
+            <span>Programming Logic, Algorithmic Thinking, Python Basics</span>
+        </div>
+        <div class="course-item">
+            <strong>General Chemistry</strong>
+            <span>Atomic Structure, Chemical Bonding, Thermodynamics</span>
+        </div>
+        <div class="course-item">
+            <strong>Communicative English Skills</strong>
+            <span>Academic Writing, Presentation, Research Reporting</span>
+        </div>
+    </div>
+</details>
+
         <p>- Focus Area: Data reduction pipelines, celestial mechanics, and observational techniques using Python and AstroImageJ.</p>
     </section>
 
